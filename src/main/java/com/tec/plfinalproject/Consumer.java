@@ -6,9 +6,11 @@ import java.util.logging.Logger;
 
 public class Consumer extends Thread {
     Buffer buffer;
+    int msConsumer;
     
-    Consumer(Buffer buffer) {
+    Consumer(Buffer buffer, int msConsumer) {
         this.buffer = buffer;
+        this.msConsumer = msConsumer;
     }
     
     @Override
@@ -22,7 +24,7 @@ public class Consumer extends Thread {
             Buffer.print("Consumer consumed: " + product);
             
             try {
-                Thread.sleep(1000);
+                Thread.sleep(this.msConsumer);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }

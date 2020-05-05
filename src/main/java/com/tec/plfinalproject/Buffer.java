@@ -6,38 +6,43 @@ import java.util.logging.Logger;
 
 public class Buffer {
     
-    private char buffer;
+    private char[] buffer;
+    private int maxSize;
+    private int current;
     
-    Buffer() {
-        this.buffer = 0;
+    Buffer(int maxSize) {
+        this.buffer = new char[maxSize];
+        this.maxSize = maxSize;
+        this.current = 0;
     }
     
     synchronized char consume() {
         char product = 0;
         
-        if(this.buffer == 0) {
+        if(this.current == 0) {
             try {
                 wait(1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        product = this.buffer;
-        this.buffer = 0;
+        product = this.buffer[current-1];
+        current--;
         notify();
         
         return product;
     }
     
     synchronized void produce(char product) {
-        if(this.buffer != 0) {
+        if(this.current == this.maxSize) {
             try {
                 wait(1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        this.buffer = product;
+        this.buffer[current] = product;
+        current++;
         
         notify();
     }
