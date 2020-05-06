@@ -1,3 +1,4 @@
+package com.tec.plfinalproject;
 
 import com.tec.plfinalproject.ProducerConsumer;
 
@@ -37,8 +38,8 @@ public class GUIFrame extends javax.swing.JFrame {
         msConsumers = new javax.swing.JTextField();
         bufferSize = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jSpinner3 = new javax.swing.JSpinner();
+        nRange = new javax.swing.JTextField();
+        mRange = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         nProducers = new javax.swing.JSpinner();
@@ -95,13 +96,13 @@ public class GUIFrame extends javax.swing.JFrame {
                             .addComponent(bufferSize)
                             .addComponent(nProducers)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nRange, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(msProducers)
                             .addComponent(msConsumers)
-                            .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(mRange, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -129,8 +130,8 @@ public class GUIFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nRange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mRange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(errorBox, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                 .addContainerGap())
@@ -266,6 +267,8 @@ public class GUIFrame extends javax.swing.JFrame {
         int msProducersInt = 0;
         int msConsumersInt = 0;
         int bufferSizeInt = 0;
+        int nRangeInt = 0;
+        int mRangeInt = 0;
         
         try {
             msProducersInt = Integer.parseInt(msProducers.getText());
@@ -297,6 +300,33 @@ public class GUIFrame extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             errorBox.setText("Tamaño de buffer debe de ser un número");
+            return;
+        }
+        
+        try {
+            nRangeInt = Integer.parseInt(nRange.getText());
+            if (nRangeInt < 0) {
+                errorBox.setText("El valor n del rango debe de ser positivo");
+                return;
+            }
+        } catch (Exception e) {
+            errorBox.setText("El valor n del rango debe de ser un número");
+            return;
+        }
+        
+        try {
+            mRangeInt = (Integer)mRange.getValue();
+            if (mRangeInt < 0) {
+                errorBox.setText("El valor m del rango debe de ser positivo");
+                return;
+            }
+        } catch (Exception e) {
+            errorBox.setText("El valor m del rango debe de ser un número");
+            return;
+        }
+        
+        if(nRangeInt > mRangeInt){
+            errorBox.setText("El valor n del rango debe ser menor que el valor m del rango");
             return;
         }
         
@@ -356,15 +386,15 @@ public class GUIFrame extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JSpinner jSpinner4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JSpinner mRange;
     private javax.swing.JTextField msConsumers;
     private javax.swing.JTextField msProducers;
     private javax.swing.JSpinner nConsumers;
     private javax.swing.JSpinner nProducers;
+    private javax.swing.JTextField nRange;
     // End of variables declaration//GEN-END:variables
 }
