@@ -259,8 +259,16 @@ public class GUIFrame extends javax.swing.JFrame {
         if (nProducersInt <= 0) {
             errorBox.setText("El número de productores tiene que ser mayor a 0");
             return;
-        } else if (nConsumersInt <= 0) {
+        } else if (nProducersInt > 10){
+            errorBox.setText("El número de productores debe ser entre 1 y 10");
+            return;
+        }
+        
+        if (nConsumersInt <= 0) {
             errorBox.setText("El número de consumidores tiene que ser mayor a 0");
+            return;
+        } else if (nConsumersInt > 10){
+            errorBox.setText("El número de consumidores debe ser entre 1 y 10");
             return;
         }
         
@@ -275,6 +283,9 @@ public class GUIFrame extends javax.swing.JFrame {
             if (msProducersInt < 0) {
                 errorBox.setText("Tiempo de productores debe de ser positivo");
                 return;
+            } else if (msProducersInt > 10000){
+                errorBox.setText("Tiempo de productores debe de ser de 0ms a 10,000ms");
+                return;
             }
         } catch (Exception e) {
             errorBox.setText("Tiempo de productores debe de ser un número");
@@ -286,6 +297,9 @@ public class GUIFrame extends javax.swing.JFrame {
             if (msConsumersInt < 0) {
                 errorBox.setText("Tiempo de consumidores debe de ser positivo");
                 return;
+            } else if (msConsumersInt > 10000){
+                errorBox.setText("Tiempo de consumidores debe de ser de 0ms a 10,000ms");
+                return;
             }
         } catch (Exception e) {
             errorBox.setText("Tiempo de consumidores debe de ser un número");
@@ -296,7 +310,10 @@ public class GUIFrame extends javax.swing.JFrame {
             bufferSizeInt = Integer.parseInt(bufferSize.getText());
             if (bufferSizeInt < 1) {
                 errorBox.setText("Tamaño de buffer debe de ser mayor a 0");
-            return;
+                return;
+            } else if (bufferSizeInt > 10){
+                errorBox.setText("Tamaño de buffer debe de ser de 1 a 100");
+                return;
             }
         } catch (Exception e) {
             errorBox.setText("Tamaño de buffer debe de ser un número");
@@ -307,6 +324,9 @@ public class GUIFrame extends javax.swing.JFrame {
             nRangeInt = Integer.parseInt(nRange.getText());
             if (nRangeInt < 0) {
                 errorBox.setText("El valor n del rango debe de ser positivo");
+                return;
+            } else if (nRangeInt > 9){
+                errorBox.setText("El valor n del rango debe de ser de 0 a 9");
                 return;
             }
         } catch (Exception e) {
@@ -319,6 +339,9 @@ public class GUIFrame extends javax.swing.JFrame {
             if (mRangeInt < 0) {
                 errorBox.setText("El valor m del rango debe de ser positivo");
                 return;
+            } else if (mRangeInt > 9){
+                errorBox.setText("El valor m del rango debe de ser de 0 a 9");
+                return;
             }
         } catch (Exception e) {
             errorBox.setText("El valor m del rango debe de ser un número");
@@ -330,6 +353,7 @@ public class GUIFrame extends javax.swing.JFrame {
             return;
         }
         
+        errorBox.setText("");
         ProducerConsumer.main(nProducersInt,msProducersInt,nConsumersInt,msConsumersInt,bufferSizeInt);
     }//GEN-LAST:event_jButton1MouseClicked
 
