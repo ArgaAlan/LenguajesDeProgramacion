@@ -19,24 +19,24 @@ public class Buffer {
     synchronized char consume() {
         char product = 0;
         
-        if(this.current == 0) {
+        while(this.current == 0) {
             try {
-                wait(1000);
+                wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         product = this.buffer[current-1];
         current--;
-        notify();
+        notifyAll();
         
         return product;
     }
     
     synchronized void produce(char product) {
-        if(this.current == this.maxSize) {
+        while(this.current == this.maxSize) {
             try {
-                wait(1000);
+                wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -44,7 +44,7 @@ public class Buffer {
         this.buffer[current] = product;
         current++;
         
-        notify();
+        notifyAll();
     }
     
     static int count = 1;
