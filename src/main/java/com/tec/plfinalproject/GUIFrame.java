@@ -1,6 +1,7 @@
-package com.tec.plfinalproject;
+package main.java.com.tec.plfinalproject;
 
-import com.tec.plfinalproject.ProducerConsumer;
+import javax.swing.JProgressBar;
+import main.java.com.tec.plfinalproject.ProducerConsumer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -55,7 +56,8 @@ public class GUIFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
-        jSpinner4 = new javax.swing.JSpinner();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -182,6 +184,10 @@ public class GUIFrame extends javax.swing.JFrame {
 
         jProgressBar1.setValue(50);
 
+        jLabel9.setText("Tareas realizadas:");
+
+        jLabel10.setText("0");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -193,11 +199,15 @@ public class GUIFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                    .addComponent(jSpinner4))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,8 +223,10 @@ public class GUIFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel10)))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Procesos", jPanel3);
@@ -256,6 +268,9 @@ public class GUIFrame extends javax.swing.JFrame {
         
         int nProducersInt = (Integer)nProducers.getValue();
         int nConsumersInt = (Integer)nConsumers.getValue();
+        
+        jProgressBar1.setValue(0);  
+        
         if (nProducersInt <= 0) {
             errorBox.setText("El número de productores tiene que ser mayor a 0");
             return;
@@ -330,9 +345,10 @@ public class GUIFrame extends javax.swing.JFrame {
             return;
         }
         
-        ProducerConsumer.main(nProducersInt,msProducersInt,nConsumersInt,msConsumersInt,bufferSizeInt);
+        ProducerConsumer.main(nProducersInt,msProducersInt,nConsumersInt,msConsumersInt,bufferSizeInt, jProgressBar1, jLabel10);
     }//GEN-LAST:event_jButton1MouseClicked
 
+    
     /**
      * @param args the command line arguments
      */
@@ -373,6 +389,7 @@ public class GUIFrame extends javax.swing.JFrame {
     private javax.swing.JLabel errorBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -380,13 +397,13 @@ public class GUIFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;

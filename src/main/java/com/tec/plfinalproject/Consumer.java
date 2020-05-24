@@ -1,5 +1,5 @@
 
-package com.tec.plfinalproject;
+package main.java.com.tec.plfinalproject;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +22,7 @@ public class Consumer extends Thread {
             product = this.buffer.consume();
             //System.out.println("Consumer consumed: " + product);
             Buffer.print("Consumer consumed: " + product);
-            
+            ProducerConsumer.completedTask();
             try {
                 Thread.sleep(this.msConsumer);
             } catch (InterruptedException ex) {

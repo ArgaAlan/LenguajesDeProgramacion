@@ -1,5 +1,5 @@
 
-package com.tec.plfinalproject;
+package main.java.com.tec.plfinalproject;
 
 import java.util.Random;
 import java.util.logging.Level;
@@ -26,6 +26,7 @@ public class Producer extends Thread {
             this.buffer.produce(product);
             //System.out.println("Producer produced: " + product);
             Buffer.print("Producer produced: " + product);
+            ProducerConsumer.completedTask();
             
             try {
                 Thread.sleep(this.msProducer);
