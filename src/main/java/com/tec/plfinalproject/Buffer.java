@@ -1,5 +1,5 @@
 
-package com.tec.plfinalproject;
+package main.java.com.tec.plfinalproject;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

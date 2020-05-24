@@ -1,6 +1,7 @@
-package com.tec.plfinalproject;
+package main.java.com.tec.plfinalproject;
 
-import com.tec.plfinalproject.ProducerConsumer;
+import javax.swing.JProgressBar;
+import main.java.com.tec.plfinalproject.ProducerConsumer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -256,6 +257,9 @@ public class GUIFrame extends javax.swing.JFrame {
         
         int nProducersInt = (Integer)nProducers.getValue();
         int nConsumersInt = (Integer)nConsumers.getValue();
+        
+        jProgressBar1.setValue(0);  
+        
         if (nProducersInt <= 0) {
             errorBox.setText("El número de productores tiene que ser mayor a 0");
             return;
@@ -330,9 +334,10 @@ public class GUIFrame extends javax.swing.JFrame {
             return;
         }
         
-        ProducerConsumer.main(nProducersInt,msProducersInt,nConsumersInt,msConsumersInt,bufferSizeInt);
+        ProducerConsumer.main(nProducersInt,msProducersInt,nConsumersInt,msConsumersInt,bufferSizeInt, jProgressBar1);
     }//GEN-LAST:event_jButton1MouseClicked
 
+    
     /**
      * @param args the command line arguments
      */
