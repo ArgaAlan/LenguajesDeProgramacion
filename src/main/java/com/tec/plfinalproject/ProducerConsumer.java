@@ -1,6 +1,7 @@
 
 package main.java.com.tec.plfinalproject;
 
+import java.util.ArrayList;
 import javax.swing.JProgressBar;
 
 public class ProducerConsumer {
@@ -10,7 +11,21 @@ public class ProducerConsumer {
     private static int taskCompleted;
     private static javax.swing.JProgressBar JProgressBarS;
     private static javax.swing.JLabel JLabelTasks;
+    private static ArrayList<Producer> producer;
+    private static ArrayList<Consumer> consumer;
 
+    public static void stop(){
+        for (int i = 0; i < producer.size(); i++) {
+            producer.get(i).killThread();
+        }
+        
+        for (int i = 0; i < consumer.size(); i++) {
+            consumer.get(i).killThread();
+        }
+        
+        System.out.println("Producers and Consumers stopped.");
+    }
+    
     public static void main(int nProducers, int msProducers, int nConsumers, int msConsumers, int bufferSize, javax.swing.JProgressBar JProgressBar, javax.swing.JLabel JLabel) {
         
         taskCompleted = 0;
@@ -25,14 +40,17 @@ public class ProducerConsumer {
         
         Buffer buffer = new Buffer(bufferSize);
         
+        producer = new ArrayList<Producer>();
+        consumer = new ArrayList<Consumer>();
+        
         for (int i = 0; i < nProducers; i++) {
-            Producer producer = new Producer(buffer, msProducers);
-            producer.start();
+            producer.add(new Producer(buffer, msProducers));
+            producer.get(i).start();
         }
         
         for (int i = 0; i < nConsumers; i++) {
-            Consumer consumer = new Consumer(buffer, msConsumers);
-            consumer.start();
+            consumer.add(new Consumer(buffer, msConsumers));
+            consumer.get(i).start();
         }
     }
     

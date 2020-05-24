@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 public class Consumer extends Thread {
     Buffer buffer;
     int msConsumer;
+    private boolean exit = false;
     
     Consumer(Buffer buffer, int msConsumer) {
         this.buffer = buffer;
@@ -18,7 +19,7 @@ public class Consumer extends Thread {
         System.out.println("Running Consumer...");
         char product;
         
-        for(int i=0 ; i<5 ; i++) {
+        while(!this.exit) {
             product = this.buffer.consume();
             //System.out.println("Consumer consumed: " + product);
             Buffer.print("Consumer consumed: " + product);
@@ -29,5 +30,9 @@ public class Consumer extends Thread {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+    public void killThread(){
+        exit = true;
     }
 }
