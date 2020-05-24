@@ -21,7 +21,6 @@ public class GUIFrame extends javax.swing.JFrame {
      */
     public GUIFrame() {
         initComponents();
-        PCManager = new ProducerConsumer();
     }
 
     /**
@@ -284,6 +283,7 @@ public class GUIFrame extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         
+        PCManager = new ProducerConsumer();
         int nProducersInt = (Integer)nProducers.getValue();
         int nConsumersInt = (Integer)nConsumers.getValue();
         
