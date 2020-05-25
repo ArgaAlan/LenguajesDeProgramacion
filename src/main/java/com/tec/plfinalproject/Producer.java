@@ -26,7 +26,7 @@ public class Producer extends Thread {
     public void run() {
         System.out.println("Running Producer...");
         String products = "+-*/";
-        Random r = new Random(System.currentTimeMillis());
+        
         char product;
         
         while(!this.exit) {
