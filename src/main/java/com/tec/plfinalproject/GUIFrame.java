@@ -1,5 +1,6 @@
 package main.java.com.tec.plfinalproject;
 
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import main.java.com.tec.plfinalproject.ProducerConsumer;
 
@@ -15,6 +16,7 @@ import main.java.com.tec.plfinalproject.ProducerConsumer;
  */
 public class GUIFrame extends javax.swing.JFrame {
 
+    private boolean started = false;
     private ProducerConsumer PCManager;
     /**
      * Creates new form GUIFrame
@@ -362,12 +364,17 @@ public class GUIFrame extends javax.swing.JFrame {
             errorBox.setText("El valor n del rango debe ser menor que el valor m del rango");
             return;
         }
+        this.started = true;
         errorBox.setText("");
         PCManager.main(nProducersInt,msProducersInt,nConsumersInt,msConsumersInt,bufferSizeInt, jProgressBar1, jLabel10);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        PCManager.stop();
+        if(this.started){
+            PCManager.stop();
+            this.started = false;
+            JOptionPane.showMessageDialog(this, "Producers and consumers stopped.");
+        } else JOptionPane.showMessageDialog(this, "no thread started yet", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButton2MouseClicked
 
     
