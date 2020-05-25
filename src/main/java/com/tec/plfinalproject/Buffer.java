@@ -44,6 +44,7 @@ public class Buffer {
         }
         this.buffer[current] = product;
         current++;
+        GUIFrame.tablePending(idProducer, product);
         
         notifyAll();
     }

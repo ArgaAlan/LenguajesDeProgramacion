@@ -400,7 +400,10 @@ public class GUIFrame extends javax.swing.JFrame {
         }
         jButton1.setEnabled(false);
         jButton2.setEnabled(true);
-        
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {}, new String[] {"id", "exp"}));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {}, new String[] {"id", "exp", "SCHEME"}));
+
         errorBox.setText("");
         PCManager.main(nProducersInt,msProducersInt,nConsumersInt,msConsumersInt,bufferSizeInt,nRangeInt,mRangeInt, jProgressBar1, jLabel10);
         nProducers.setValue((Integer)0);
@@ -410,7 +413,8 @@ public class GUIFrame extends javax.swing.JFrame {
         bufferSize.setText("");
         msProducers.setText("");
         nProducers.setValue((Integer)0);
-        
+        nRange.setText("");
+        mRange.setValue((Integer)0);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
