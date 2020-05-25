@@ -401,8 +401,8 @@ public class GUIFrame extends javax.swing.JFrame {
         jButton1.setEnabled(false);
         jButton2.setEnabled(true);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {}, new String[] {"id", "exp"}));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {}, new String[] {"id", "exp", "SCHEME"}));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {}, new String[] {"ID", "Exp"}));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {}, new String[] {"ID", "SCHEME", "Valor"}));
 
         errorBox.setText("");
         PCManager.main(nProducersInt,msProducersInt,nConsumersInt,msConsumersInt,bufferSizeInt,nRangeInt,mRangeInt, jProgressBar1, jLabel10);
@@ -433,12 +433,12 @@ public class GUIFrame extends javax.swing.JFrame {
 	table1.addRow(row);
     }
 
-    public static void tableDone(int id, String exp){
+    public static void tableDone(int id, String exp, int value){
         DefaultTableModel table2 =  (DefaultTableModel) GUIFrame.jTable2.getModel();
         Object row[] = new Object[3];
         row[0] = id;
         row[1] = exp;
-        row[2] = "SCHEME";
+        row[2] = value;
         table2.addRow(row);
         //ProducerConsumer.addToCounter();
     }

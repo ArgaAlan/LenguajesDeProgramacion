@@ -61,4 +61,26 @@ public class ProducerConsumer {
         Buffer.print("Task completed");
     }
     
+    public static int getValueFromExp(String expression) {
+        String[] data = expression.split(" ");
+        String op = data[1];
+        int first = Integer.parseInt(data[2]);
+        int second = Integer.parseInt(data[3]);
+        switch(op) {
+            case "+":
+                return first+second;
+            case "-":
+                return first-second;
+            case "*":
+                return first*second;
+            case "/":
+                if (second == 0) {
+                    second++;
+                }
+                return first/second;
+            default:
+                return 1;
+        }
+    }
+    
 }
