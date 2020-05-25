@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import javax.swing.JProgressBar;
 
 public class ProducerConsumer {
-    
-    private static double taskPercentage;
-    private static double oneTask;
     private static double maxSize;
     private static int taskCompleted;
     private static javax.swing.JProgressBar JProgressBarS;
@@ -32,12 +29,6 @@ public class ProducerConsumer {
         
         buffer = new Buffer(bufferSize);
         
-        
-        double producers = nProducers;
-        double consumers = nConsumers;
-        oneTask = 100 ;
-        taskPercentage = 0;
-        
         maxSize = buffer.getMaxSize();
         taskCompleted = 0;
         JProgressBar.setValue(0);
@@ -59,13 +50,14 @@ public class ProducerConsumer {
         }
     }
     
-    public static void completedTask(){
+    public static void addToCounter() {
         ++taskCompleted;
-        
-        JProgressBarS.setValue((int) Math.round((100/maxSize)*buffer.getCurrent()));
-        
         JLabelTasks.setText(Integer.toString(taskCompleted));
+    }
+    
+    public static void completedTask(){
         
+        JProgressBarS.setValue((int) Math.round((100/maxSize)*buffer.getCurrent()));                        
         Buffer.print("Task completed");
     }
     
