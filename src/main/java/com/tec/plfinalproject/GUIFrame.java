@@ -3,6 +3,7 @@ package main.java.com.tec.plfinalproject;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import main.java.com.tec.plfinalproject.ProducerConsumer;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,6 +18,8 @@ import main.java.com.tec.plfinalproject.ProducerConsumer;
 public class GUIFrame extends javax.swing.JFrame {
 
     private ProducerConsumer PCManager;
+    private static DefaultTableModel table1 =  (DefaultTableModel) GUIFrame.jTable1.getModel();   
+    private static DefaultTableModel table2 =  (DefaultTableModel) GUIFrame.jTable2.getModel();
     /**
      * Creates new form GUIFrame
      */
@@ -418,7 +421,22 @@ public class GUIFrame extends javax.swing.JFrame {
         jButton2.setEnabled(false);
         jButton1.setEnabled(true);
     }//GEN-LAST:event_jButton2MouseClicked
+    
+    public static void tablePending(int id, String exp){   
+	Object row[] = new Object[2];
+	row[0] = id;
+	row[1] = exp;
+	table1.addRow(row);
+    }
 
+    public static void tableDone(int id, String exp){
+        Object row[] = new Object[3];
+        row[0] = id;
+        row[1] = exp;
+        row[2] = "SCHEME";
+        table2.addRow(row);
+        //ProducerConsumer.addToCounter();
+    }
     
     /**
      * @param args the command line arguments
@@ -477,8 +495,8 @@ public class GUIFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private static javax.swing.JTable jTable1;
+    private static javax.swing.JTable jTable2;
     private javax.swing.JSpinner mRange;
     private javax.swing.JTextField msConsumers;
     private javax.swing.JTextField msProducers;
