@@ -28,6 +28,7 @@ public class Buffer {
         }
         product = this.buffer[current-1];
         current--;
+        GUIFrame.removePending(product);
         notifyAll();
         
         return product;

@@ -18,8 +18,6 @@ import javax.swing.table.DefaultTableModel;
 public class GUIFrame extends javax.swing.JFrame {
 
     private ProducerConsumer PCManager;
-    private static DefaultTableModel table1 =  (DefaultTableModel) GUIFrame.jTable1.getModel();   
-    private static DefaultTableModel table2 =  (DefaultTableModel) GUIFrame.jTable2.getModel();
     /**
      * Creates new form GUIFrame
      */
@@ -295,6 +293,7 @@ public class GUIFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         
         PCManager = new ProducerConsumer();
@@ -423,6 +422,7 @@ public class GUIFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
     
     public static void tablePending(int id, String exp){   
+        DefaultTableModel table1 =  (DefaultTableModel) GUIFrame.jTable1.getModel();  
 	Object row[] = new Object[2];
 	row[0] = id;
 	row[1] = exp;
@@ -430,6 +430,7 @@ public class GUIFrame extends javax.swing.JFrame {
     }
 
     public static void tableDone(int id, String exp){
+        DefaultTableModel table2 =  (DefaultTableModel) GUIFrame.jTable2.getModel();
         Object row[] = new Object[3];
         row[0] = id;
         row[1] = exp;
@@ -438,6 +439,15 @@ public class GUIFrame extends javax.swing.JFrame {
         //ProducerConsumer.addToCounter();
     }
     
+    public static void removePending(String exp){
+        DefaultTableModel table1 =  (DefaultTableModel) GUIFrame.jTable1.getModel();  
+         for(int i=table1.getRowCount()-1;i>=0;i--){
+            if(((String)table1.getValueAt(i, 1)).equals(exp)){
+                table1.removeRow(i);
+                break;
+            }
+        }
+    }
     /**
      * @param args the command line arguments
      */
