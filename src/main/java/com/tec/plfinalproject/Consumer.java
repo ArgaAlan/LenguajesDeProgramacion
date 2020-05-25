@@ -7,11 +7,13 @@ import java.util.logging.Logger;
 public class Consumer extends Thread {
     Buffer buffer;
     int msConsumer;
+    int idConsumer;
     private boolean exit = false;
     
-    Consumer(Buffer buffer, int msConsumer) {
+    Consumer(Buffer buffer, int msConsumer, int idConsumer) {
         this.buffer = buffer;
         this.msConsumer = msConsumer;
+        this.idConsumer=idConsumer;
     }
     
     @Override

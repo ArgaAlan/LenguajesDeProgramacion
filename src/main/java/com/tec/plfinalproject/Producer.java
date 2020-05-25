@@ -8,17 +8,24 @@ import java.util.logging.Logger;
 public class Producer extends Thread {
     Buffer buffer;
     int msProducer;
-    private boolean exit = false; 
+    int nRangeInt;
+    int mRangeInt;
+    int idProducer;
+    private boolean exit = false;
+    private static Random r = new Random(System.currentTimeMillis());
     
-    Producer(Buffer buffer, int msProducer) {
+    Producer(Buffer buffer, int msProducer, int nRangeInt, int mRangeInt, int idProducer) {
         this.buffer = buffer;
         this.msProducer = msProducer;
+        this.nRangeInt= nRangeInt;
+        this.mRangeInt= mRangeInt;
+        this.idProducer=idProducer;
     }
     
     @Override
     public void run() {
         System.out.println("Running Producer...");
-        String products = "AEIOU";
+        String products = "+-*/";
         Random r = new Random(System.currentTimeMillis());
         char product;
         
