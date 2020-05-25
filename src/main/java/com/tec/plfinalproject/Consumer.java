@@ -19,12 +19,12 @@ public class Consumer extends Thread {
     @Override
     public void run() {
         System.out.println("Running Consumer...");
-        char product;
+        String product;
         
         while(!this.exit) {
             product = this.buffer.consume();
             //System.out.println("Consumer consumed: " + product);
-            Buffer.print("Consumer consumed: " + product);
+            Buffer.print("ID: " + this.idConsumer +"consumed: " + product);
             ProducerConsumer.completedTask();
             try {
                 Thread.sleep(this.msConsumer);
