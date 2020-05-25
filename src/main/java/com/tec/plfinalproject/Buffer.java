@@ -53,4 +53,13 @@ public class Buffer {
         System.out.println(string);
     }
     
+    public double getMaxSize(){
+        double maxSize = this.maxSize;
+        return maxSize;
+    }
+    
+    public double getCurrent(){
+        double current = this.current;
+        return current;
+    }
 }

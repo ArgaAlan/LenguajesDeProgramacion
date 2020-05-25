@@ -26,6 +26,7 @@ public class Consumer extends Thread {
             //System.out.println("Consumer consumed: " + product);
             Buffer.print("ID: " + this.idConsumer +"consumed: " + product);
             ProducerConsumer.completedTask();
+            ProducerConsumer.addToCounter();
             try {
                 Thread.sleep(this.msConsumer);
             } catch (InterruptedException ex) {
