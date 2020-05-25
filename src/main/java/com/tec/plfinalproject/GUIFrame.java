@@ -414,6 +414,7 @@ public class GUIFrame extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         PCManager.stop();
         JOptionPane.showMessageDialog(this, "threads stopped.");
+        
         jButton2.setEnabled(false);
         jButton1.setEnabled(true);
     }//GEN-LAST:event_jButton2MouseClicked
