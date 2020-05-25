@@ -366,6 +366,7 @@
           <Color blue="0" green="0" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="PARAR"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseClicked"/>

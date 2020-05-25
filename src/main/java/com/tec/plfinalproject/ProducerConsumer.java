@@ -26,7 +26,7 @@ public class ProducerConsumer {
         System.out.println("Producers and Consumers stopped.");
     }
     
-    public static void main(int nProducers, int msProducers, int nConsumers, int msConsumers, int bufferSize, javax.swing.JProgressBar JProgressBar, javax.swing.JLabel JLabel) {
+    public static void main(int nProducers, int msProducers, int nConsumers, int msConsumers, int bufferSize, int nRangeInt, int mRangeInt, javax.swing.JProgressBar JProgressBar, javax.swing.JLabel JLabel) {
         
         taskCompleted = 0;
         taskPercentage = 0;
@@ -44,12 +44,12 @@ public class ProducerConsumer {
         consumer = new ArrayList<Consumer>();
         
         for (int i = 0; i < nProducers; i++) {
-            producer.add(new Producer(buffer, msProducers));
+            producer.add(new Producer(buffer, msProducers, nRangeInt, mRangeInt, i));
             producer.get(i).start();
         }
         
         for (int i = 0; i < nConsumers; i++) {
-            consumer.add(new Consumer(buffer, msConsumers));
+            consumer.add(new Consumer(buffer, msConsumers, i));
             consumer.get(i).start();
         }
     }

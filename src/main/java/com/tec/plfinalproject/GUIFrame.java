@@ -245,6 +245,7 @@ public class GUIFrame extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(204, 0, 0));
         jButton2.setText("PARAR");
+        jButton2.setEnabled(false);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -386,12 +387,23 @@ public class GUIFrame extends javax.swing.JFrame {
             return;
         }
         
+        jButton2.setEnabled(true);
+        
         errorBox.setText("");
-        PCManager.main(nProducersInt,msProducersInt,nConsumersInt,msConsumersInt,bufferSizeInt, jProgressBar1, jLabel10);
+        PCManager.main(nProducersInt,msProducersInt,nConsumersInt,msConsumersInt,bufferSizeInt,nRangeInt,mRangeInt, jProgressBar1, jLabel10);
+        nProducers.setValue((Integer)0);
+        nConsumers.setValue((Integer)0);
+        msProducers.setText("");
+        msConsumers.setText("");
+        bufferSize.setText("");
+        msProducers.setText("");
+        nProducers.setValue((Integer)0);
+        
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         PCManager.stop();
+        jButton2.setEnabled(false);
     }//GEN-LAST:event_jButton2MouseClicked
 
     
