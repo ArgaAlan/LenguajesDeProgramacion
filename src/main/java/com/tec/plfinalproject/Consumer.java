@@ -20,6 +20,7 @@ public class Consumer extends Thread {
     public void run() {
         System.out.println("Running Consumer...");
         String product;
+        int value;
         
         while(!this.exit) {
             product = this.buffer.consume();
@@ -27,7 +28,11 @@ public class Consumer extends Thread {
             Buffer.print("ID: " + this.idConsumer +"consumed: " + product);
             ProducerConsumer.completedTask();
             ProducerConsumer.addToCounter();
-            GUIFrame.tableDone(this.idConsumer,product); 
+            value = ProducerConsumer.getValueFromExp(product);
+            
+            try {
+                GUIFrame.tableDone(this.idConsumer,product, value); 
+            } catch (Exception e) {}
             try {
                 Thread.sleep(this.msConsumer);
             } catch (InterruptedException ex) {
