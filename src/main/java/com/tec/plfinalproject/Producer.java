@@ -30,10 +30,14 @@ public class Producer extends Thread {
         char product;
         
         while(!this.exit) {
-            product = products.charAt(r.nextInt(5));
-            this.buffer.produce(product);
+            product = products.charAt(r.nextInt(4));
+            int numRand1 = r.nextInt(this.mRangeInt - this.nRangeInt + 1) + this.nRangeInt;
+            int numRand2 = r.nextInt(this.mRangeInt - this.nRangeInt + 1) + this.nRangeInt;
+            
+            String expression = "( " + product + " " + numRand1 + " " + numRand2 + ")" ;
+            this.buffer.produce(expression, this.idProducer);
             //System.out.println("Producer produced: " + product);
-            Buffer.print("Producer produced: " + product);
+            Buffer.print("ID: " + this.idProducer + " produced: " + product);
             ProducerConsumer.completedTask();
             
             try {

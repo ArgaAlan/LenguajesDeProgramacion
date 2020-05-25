@@ -6,18 +6,18 @@ import java.util.logging.Logger;
 
 public class Buffer {
     
-    private char[] buffer;
+    private String[] buffer;
     private int maxSize;
     private int current;
     
     Buffer(int maxSize) {
-        this.buffer = new char[maxSize];
+        this.buffer = new String[maxSize];
         this.maxSize = maxSize;
         this.current = 0;
     }
     
-    synchronized char consume() {
-        char product = 0;
+    synchronized String consume() {
+        String product = "";
         
         while(this.current == 0) {
             try {
@@ -33,7 +33,7 @@ public class Buffer {
         return product;
     }
     
-    synchronized void produce(char product) {
+    synchronized void produce(String product, int idProducer) {
         while(this.current == this.maxSize) {
             try {
                 wait();
