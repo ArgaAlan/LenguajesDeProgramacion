@@ -34,6 +34,10 @@ public class Producer extends Thread {
             int numRand1 = r.nextInt(this.mRangeInt - this.nRangeInt + 1) + this.nRangeInt;
             int numRand2 = r.nextInt(this.mRangeInt - this.nRangeInt + 1) + this.nRangeInt;
             
+            if(product == '/' && numRand2 == 0) {
+                numRand2++;
+            }
+            
             String expression = "( " + product + " " + numRand1 + " " + numRand2 + " )" ;
             this.buffer.produce(expression, this.idProducer);
             //System.out.println("Producer produced: " + product);

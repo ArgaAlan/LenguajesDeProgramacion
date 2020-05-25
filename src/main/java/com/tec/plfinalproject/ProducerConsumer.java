@@ -74,9 +74,6 @@ public class ProducerConsumer {
             case "*":
                 return first*second;
             case "/":
-                if (second == 0) {
-                    second++;
-                }
                 return first/second;
             default:
                 return 1;
